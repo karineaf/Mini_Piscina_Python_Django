@@ -1,6 +1,6 @@
 import sys
 
-def capital_cities_of_states():
+def states_of_capital_cities():
 
     states = {
         "Oregon" : "OR",
@@ -14,11 +14,11 @@ def capital_cities_of_states():
         "NJ": "Trenton",
         "CO": "Denver"
     }
-    cities_of_states={}
+    state_of_cities={}
     for state_name, state_acronym in states.items():    
         for city_acronym, city_name  in capital_cities.items():
             if state_acronym == city_acronym:
-                cities_of_states[state_name]=city_name
+                state_of_cities[city_name]=state_name
    
     try:
         args_sys = str(sys.argv[1])
@@ -26,13 +26,13 @@ def capital_cities_of_states():
         if len(sys.argv) != 2:
             raise IndexError
 
-        print(cities_of_states[args_sys])
+        print(state_of_cities[args_sys])
 
     except IndexError:
         print('')
     except KeyError:
-        print('Unknown state')
+        print('Unknown capital city')
 
 
 if __name__ == "__main__":
-    capital_cities_of_states()
+    states_of_capital_cities()

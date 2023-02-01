@@ -22,12 +22,22 @@ def to_dict():
         ('Thompson' , '1949'),
         ('Burton' , '1939')
     ]
-    var_dict = {}
+    
+    dict_ = {}
     for item in d:
-        var_dict[item[0]]=item[1]
-        
-    [print(f"{key}: {value}") for key, value in var_dict.items()]
+        dict_[item[0]]=item[1]
 
+    new_dict = {}
+    for key, value in dict_.items():
+        if new_dict.get(value) is None:
+            new_dict[value]=key
+        else:
+            new_dict.update({value: f"{new_dict.get(value)} {key}"})
+    
+    sorted_list = sorted(new_dict.items())
+    for key, value in sorted_list:
+        print(f"{key} : {value}")
+        
 
 if __name__ == "__main__":
     to_dict()
